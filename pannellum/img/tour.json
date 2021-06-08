@@ -1,0 +1,94 @@
+{
+    "default": {
+        "firstScene": "home",
+        "author": "V.A. Marechal",
+        "sceneFadeDuration": 1000
+    },
+    
+    "scenes": {
+        "home": {
+            "title": "Home",
+            "hfov": 100,
+            "pitch": -70,
+            "yaw": -3,
+            "type": "equirectangular",
+            "panorama": "Pano_1.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -0.8,
+                    "yaw": 5,
+                    "type": "scene",
+                    "text": "Lake",
+                    "sceneId": "lake",
+                    "targetPitch": -30,
+                    "targetYaw": 72
+                },
+                {
+                    "pitch": -0.8,
+                    "yaw": -145,
+                    "type": "scene",
+                    "text": "Bridge",
+                    "sceneId": "bridge",
+                    "targetPitch": -30,
+                    "targetYaw": 50
+                }
+            ]
+        },
+        
+        "lake": {
+            "title": "Lake",
+            "hfov": 110,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "Pano_4.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -0.8,
+                    "yaw": -104,
+                    "type": "scene",
+                    "text": "Home",
+                    "sceneId": "home",
+                    "targetPitch": -30,
+                    "targetYaw": 175
+                },
+                {
+                    "pitch": -0.8,
+                    "yaw": -85,
+                    "type": "scene",
+                    "text": "Bridge",
+                    "sceneId": "bridge",
+                    "targetPitch": -30,
+                    "targetYaw": 20
+                }
+            ]
+        },
+        
+        "bridge": {
+            "title": "Bridge",
+            "hfov": 110,
+            "yaw": 5,
+            "type": "equirectangular",
+            "panorama": "Pano_3.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -0.6,
+                    "yaw": -145,
+                    "type": "scene",
+                    "text": "Home",
+                    "sceneId": "home",
+                    "targetPitch": -30,
+                    "targetYaw": 20
+                },
+                {
+                    "pitch": -0.6,
+                    "yaw": -160,
+                    "type": "scene",
+                    "text": "Lake",
+                    "sceneId": "lake",
+                    "targetPitch": -30,
+                    "targetYaw": 80
+                }
+            ]
+        }
+    }
+}
