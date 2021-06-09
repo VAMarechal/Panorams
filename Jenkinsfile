@@ -17,7 +17,8 @@ pipeline {
             steps { 
                 echo "--------Building site-----------------"
                 echo "Execute build script..." 
-                sudo sh "./make.sh"
+                sh "chmod +x -R ${env.WORKSPACE}"
+                sh "./make.sh"
                 echo "Script executed successfully!"
                 echo "Copying ready site to Build folder" 
                 sh 'cp img build'
