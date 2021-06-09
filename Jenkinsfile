@@ -32,10 +32,10 @@ pipeline {
                         sshPublisherDesc(
                             configName: "apache",                             
                             verbose: true,
-                            
                             transfers: [
-                                sshTransfer(sourceFiles: "*/img/*",),
-                                sshTransfer(execCommand: "cp -r /var/www/html/build/* /var/www/html")
+                                cleanRemote: true,
+                                sshTransfer(sourceFiles: "build/**",),
+                                sshTransfer(execCommand: "mv -r /var/www/html/build/* /var/www/html")
                             ]
                             
                         )
