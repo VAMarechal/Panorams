@@ -31,9 +31,7 @@ pipeline {
                     publishers: [
                         sshPublisherDesc(
                             configName: "apache",                             
-                            verbose: true ,
-                            sshTransfer(execCommand: "if [ -d 'img' ]; then ls img; fi"),
-                            sshTransfer(execCommand: "cp -r build/img /var/www/html/")
+                            verbose: true
                         )
                     ]
                 )
