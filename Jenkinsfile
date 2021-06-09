@@ -32,7 +32,11 @@ pipeline {
                         sshPublisherDesc(
                             configName: "apache",                             
                             verbose: true,
-                            transfers: [sshTransfer(execCommand: "cp -r build/img /var/www/html")]
+                            
+                            transfers: [
+                                sshTransfer(sourceFiles: "build/**",),
+                                sshTransfer(execCommand: "cp -r build /var/www/html")
+                            ]
                             
                         )
                     ]
