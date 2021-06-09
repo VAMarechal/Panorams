@@ -19,6 +19,7 @@ pipeline {
                 echo "Script executed successfully!"
                 echo "Copying ready site to Build folder" 
                 sh 'cp -r img build'
+                sh 'cp -r lib build'
             }
         }
         stage('Deploy'){
@@ -29,7 +30,7 @@ pipeline {
                     failOnError: true,
                     publishers: [
                         sshPublisherDesc(
-                            configName: "3.21.54.71",                             
+                            configName: "apache",                             
                             verbose: true ,
                             sshTransfer(execCommand: "if [ -d 'img' ]; then ls img; fi"),
                             sshTransfer(execCommand: "cp -r build/img /var/www/html/")
