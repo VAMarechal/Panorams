@@ -1,5 +1,5 @@
 #!/bin/bash
-outFile="index.html"
+outFile="build/index.html"
 echo '<html><head>' > $outFile 
 echo '    <title>Panorams</title>' >> $outFile
 echo '</head><body align="center">' >> $outFile
