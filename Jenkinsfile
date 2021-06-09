@@ -35,7 +35,6 @@ pipeline {
                             
                             transfers: [
                                 sshTransfer(sourceFiles: "build/.",),
-                                sshTransfer(execCommand: "cp -r build /var/www/html")
                             ]
                             
                         )
