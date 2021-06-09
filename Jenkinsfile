@@ -5,6 +5,7 @@ pipeline {
             steps {
                 echo "--------Cleaning up old build files-----------------"
                 sh '''
+                      if [ -d "build" ]; then rm -Rf build; fi
                       mkdir build
                 '''
             }
