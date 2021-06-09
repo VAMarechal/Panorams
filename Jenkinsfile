@@ -18,7 +18,7 @@ pipeline {
                 sh "./make.sh"
                 echo "Script executed successfully!"
                 echo "Copying ready site to Build folder" 
-                sh 'cp img build'
+                sh 'cp -r img build'
             }
         }
         stage('Deploy'){
