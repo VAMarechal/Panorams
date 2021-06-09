@@ -34,7 +34,7 @@ pipeline {
                             verbose: true,
                             transfers: [
                                 sshTransfer(sourceFiles: "build/**",),
-                                sshTransfer(execCommand: "mv -r /var/www/html/build/* /var/www/html")
+                                sshTransfer(execCommand: "mv /var/www/html/build/* /var/www/html")
                             ]
                             
                         )
