@@ -33,8 +33,7 @@ pipeline {
                             configName: "apache",                             
                             verbose: true,
                             transfers: [
-                                sshTransfer(execCommand: "rm -r /var/www/html/*"),
-                                sshTransfer(sourceFiles: "build/**",execCommand: "mv /var/www/html/build/* /var/www/html && rmdir /var/www/html/build/")
+                                sshTransfer(cleanRemote: true, sourceFiles: "build/**",execCommand: "mv /var/www/html/build/* /var/www/html && rmdir /var/www/html/build/")
                             ]
                         )
                     ]
