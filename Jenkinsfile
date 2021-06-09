@@ -34,7 +34,8 @@ pipeline {
                             verbose: true,
                             
                             transfers: [
-                                sshTransfer(sourceFiles: "build/img",),
+                                sshTransfer(sourceFiles: "*/img/*",),
+                                sshTransfer(execCommand: "cp -r * /var/www/html")
                             ]
                             
                         )
