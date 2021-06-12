@@ -40,7 +40,8 @@ pipeline {
                     final String url = "3.21.54.71"
                     final String response = sh(script: "curl -s $url", returnStdout: true).trim()
                     // echo response
-                    if ((response | grep "<title>Panorams</title>").trim()) {
+                    final String emp = echo response | grep "<title>Panorams</title>"
+                    if (emp.trim()) {
                         sh "exit 1"
                     }
                 }
