@@ -38,14 +38,9 @@ pipeline {
                 echo "--------Simply cURL of the site-----------------"
                 script {
                     final String url = "3.21.54.71"
-                    // final String response = sh(script: "curl -s $url", returnStdout: true).trim()
-                    // echo response
+                     // Verify if curl return html from site Panorams otherwise grep will fail the build
                     final String siteTitle = sh(script: "curl -s $url | grep '<title>Panorams</title>'", returnStdout: true).trim()
                     echo siteTitle
-                    if (!siteTitle) {
-                        echo "Title in not as expected. Failing the job"
-                        sh "exit 1"
-                    }
                     echo "Title in as expected. SUCCESS"
                 }
             }
