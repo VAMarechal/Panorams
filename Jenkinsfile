@@ -42,7 +42,7 @@ pipeline {
                     echo response
                     echo "!!!"
                     final String emp = sh(script: 'echo "$response" | grep "<title>Panorams</title>"', returnStdout: true).trim()
-                    // sh "echo emp"
+                    // sh "echo emp" 
                     echo "@@@@"
                     echo $emp
                     //if (emp) {
