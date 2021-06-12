@@ -5,8 +5,8 @@ pipeline {
             steps {
                 echo "--------Cleaning up old build files-----------------"
                 sh 'ls -la'
-                deleteDir()
-                sh 'ls -la'
+                // deleteDir()
+                // sh 'ls -la'
             }
         }
         stage('Build') {
