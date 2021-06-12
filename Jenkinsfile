@@ -42,7 +42,7 @@ pipeline {
                     echo response
                     final String siteTitle = sh(script: "curl -s $url | grep '<title>Panorams</title>'", returnStdout: true).trim()
                     echo siteTitle
-                    if (siteTitle) {
+                    if (!siteTitle) {
                         echo "Title in not as expected. Failing the job"
                         sh "exit 1"
                     }
