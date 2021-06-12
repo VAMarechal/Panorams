@@ -4,10 +4,9 @@ pipeline {
         stage('Cleanup') {
             steps {
                 echo "--------Cleaning up old build files-----------------"
-                sh '''
-                      if [ -d "build" ]; then rm -Rf build; fi
-                      mkdir build
-                '''
+                sh 'ls -la'
+                deleteDir()
+                sh 'ls -la'
             }
         }
         stage('Build') {
