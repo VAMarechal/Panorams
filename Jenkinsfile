@@ -1,17 +1,11 @@
 pipeline { 
     agent any 
     stages {
-        stage('Cleanup') {
-            steps {
-                echo "--------Cleaning up old build files-----------------"
-                sh 'ls -la'
-                // deleteDir()
-                // sh 'ls -la'
-            }
-        }
         stage('Build') {
             steps { 
                 echo "--------Building site-----------------"
+                echo "Create Build folder..." 
+                sh 'mkdir build'
                 echo "Execute build script..." 
                 sh "chmod +x -R ${env.WORKSPACE}"
                 sh "./make.sh"
