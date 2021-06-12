@@ -1,7 +1,7 @@
 #!/bin/bash
 outFile="build/index.html"
 echo '<html><head>' > $outFile 
-echo '    <title>Pano rams</title>' >> $outFile
+echo '    <title>Panorams</title>' >> $outFile
 echo '</head><body align="center">' >> $outFile
  
 for file in `find img/ -type f -name "*.jpg" | sort -gr |  cut -d'/' -f2`
