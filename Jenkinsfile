@@ -40,17 +40,12 @@ pipeline {
                     final String url = "3.21.54.71"
                     final String response = sh(script: "curl -s $url", returnStdout: true).trim()
                     echo response
-                    echo "!!!"
-                    final String emp = sh(script: "curl -s $url | grep '<title>Panorams</title>'", returnStdout: true).trim()
-
-                   // final String emp = sh(script: 'echo "$response" | grep "<title>Panorams</title>"', returnStdout: true).trim()
-                    // sh "echo emp" 
-                    echo "@@@@"
-                    echo emp
-                    //if (emp) {
-                    //    echo "Title in not as expected. Failing the job"
-                    //    sh "exit 1"
-                    //}
+                    final String siteTitle = sh(script: "curl -s $url | grep '<title>Panorams</title>'", returnStdout: true).trim()
+                    echo siteTitle
+                    if (siteTitle) {
+                        echo "Title in not as expected. Failing the job"
+                        sh "exit 1"
+                    }
                     echo "Title in as expected. SUCCESS"
                 }
             }
