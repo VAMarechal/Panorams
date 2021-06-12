@@ -5,11 +5,8 @@ pipeline {
             steps {
                 echo "--------Cleaning up old build files-----------------"
                 sh '''
-                    if ! [ -d build/ ]; then
+                      if [ -d "build" ]; then rm -Rf build; fi
                       mkdir build
-                    else
-                      rm build/*
-                    fi
                 '''
             }
         }
@@ -17,10 +14,12 @@ pipeline {
             steps { 
                 echo "--------Building site-----------------"
                 echo "Execute build script..." 
+                sh "chmod +x -R ${env.WORKSPACE}"
                 sh "./make.sh"
                 echo "Script executed successfully!"
                 echo "Copying ready site to Build folder" 
-                sh 'cp img build'
+                sh 'cp -r img build'
+                sh 'cp -r lib build'
             }
         }
         stage('Deploy'){
@@ -31,10 +30,11 @@ pipeline {
                     failOnError: true,
                     publishers: [
                         sshPublisherDesc(
-                            configName: "3.21.54.71",                             
-                            verbose: true ,
-                            sshTransfer(execCommand: "if [ -d 'img' ]; then ls img; fi"),
-                            sshTransfer(execCommand: "cp -r build/img /var/www/html/")
+                            configName: "apache",                             
+                            verbose: true,
+                            transfers: [
+                                sshTransfer(cleanRemote: true, sourceFiles: "build/**",execCommand: "mv /var/www/html/build/* /var/www/html && rmdir /var/www/html/build/")
+                            ]
                         )
                     ]
                 )
