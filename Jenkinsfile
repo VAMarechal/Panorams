@@ -41,7 +41,7 @@ pipeline {
                     final String response = sh(script: "curl -s $url", returnStdout: true).trim()
                     echo response
                     echo "!!!"
-                    final String emp = sh(script: '$response | grep "<title>Panorams</title>"', returnStdout: true).trim()
+                    final String emp = sh(script: 'echo $response | grep "<title>Panorams</title>"', returnStdout: true).trim()
                     // sh "echo emp"
                     echo "@@@@"
                     echo $emp
