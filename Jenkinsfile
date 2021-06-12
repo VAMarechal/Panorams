@@ -39,9 +39,11 @@ pipeline {
                 script {
                     final String url = "3.21.54.71"
                     final String response = sh(script: "curl -s $url", returnStdout: true).trim()
-                    // echo response
+                    echo response
                     final String emp = sh(script: 'echo response | grep "<title>Panorams</title>"', returnStdout: true).trim()
+                    echo "Parsed title is $emp"
                     sh "echo emp"
+                    echo emp
                     if (emp) {
                         sh "exit 1"
                     }
