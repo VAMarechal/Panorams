@@ -41,10 +41,10 @@ pipeline {
                     final String response = sh(script: "curl -s $url", returnStdout: true).trim()
                     echo response
                     final String emp = sh(script: '$response | grep "<title>Panorams</title>"', returnStdout: true).trim()
-                    sh "echo emp"
+                    // sh "echo emp"
                     echo "!!!"
-                    echo emp
-                    if (emp) {
+                    echo $emp
+                    if ($emp) {
                         echo "Title in not as expected. Failing the job"
                         sh "exit 1"
                     }
