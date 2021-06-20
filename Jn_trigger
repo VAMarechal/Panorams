@@ -17,21 +17,14 @@ pipeline {
                     // Verify if curl return html from site
                      // final String siteTitle = sh(script: "curl -s $url --max-time 5", returnStdout: true).trim()
                                         
-                    // def code = new URL("http://3.21.54.71/").openConnection().with {
-                    //  requestMethod = 'HEAD'
-                    //  connect()
-                    //  responseCode
-                    //}
-                    //echo $code
-                    def code = new URL('http://www.google.com/made.up').openConnection().with {
-                        requestMethod = 'HEAD'
-                        connect()
-                        responseCode
+                    Boolean bool = fileExists 'NewFile.txt'
+                    if(bool) {
+                        println "The File exists :)"
                     }
-                    echo code
-                    assert code == 404
-                    
-                    
+                    else {
+                        println "The File does not exist :("
+                    }                   
+
                     // if(final String siteTitle = sh(script: "curl -s $url --max-time 5", returnStdout: true).trim()) {
                     //   echo "0" 
                     //} else{ 
