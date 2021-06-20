@@ -1,0 +1,17 @@
+pipeline { 
+    agent any 
+    stages {
+        stage('Site Check') {
+            steps { 
+                echo "--------Simply cURL of the site-----------------"
+                script {
+                    final String url = "3.21.54.71"
+                     // Verify if curl return html from site
+                    final String siteTitle = sh(script: "curl -s $url", returnStdout: true).trim()
+                    echo siteTitle
+                    echo "Title in as expected. SUCCESS"
+                }
+            }
+        }
+    }
+}
