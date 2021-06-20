@@ -26,14 +26,7 @@ pipeline {
                      // final String url = "13.59.62.209"
                     // Verify if curl return html from site
                      // final String siteTitle = sh(script: "curl -s $url --max-time 5", returnStdout: true).trim()
-                    def code = new URL('http://www.google.com/made.up').openConnection().with {
-                        requestMethod = 'HEAD'
-                        connect()
-                        responseCode
-                    }
-
-                    assert code == 404
-                    
+                                        
                     // def code = new URL("http://3.21.54.71/").openConnection().with {
                     //  requestMethod = 'HEAD'
                     //  connect()
