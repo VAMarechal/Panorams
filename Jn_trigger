@@ -14,17 +14,12 @@ pipeline {
                 script {
                     final String url = "3.21.54.71"
                     // final String url = "3.19.234.142" // Dinamic
-                     // final String url = "13.59.62.209"
                     // Verify if curl return html from site
-                     // final String siteTitle = sh(script: "curl -s $url --max-time 5", returnStdout: true).trim()
-                    def siteAlreadyExists = sh(
-                        // script: "curl -o/dev/null -sfI \"$url\"; echo \\\$?",
+                    def siteNotExists = sh(
                         script: "curl -s $url --max-time 5",
                         returnStatus: true
-                    ) as Boolean // Integer explicit casting needed, because it returns String
-                    println siteAlreadyExists
-                        
-                    // Boolean bool = fileExists 'NewFile.txt'
+                    ) as Boolean // Explicit casting needed, because it returns String
+                    println siteNotExists
                     
                     // if(bool) {
                     //     println "The File exists :)"
@@ -33,13 +28,6 @@ pipeline {
                     //     println "The File does not exist :("
                     // }                   
                      
-                    // println "The File does not exist :("
-                    // if(final String siteTitle = sh(script: "curl -s $url --max-time 5", returnStdout: true).trim()) {
-                    //   echo "0" 
-                    //} else{ 
-                    //   echo "1"
-                    //}
-                    // echo siteTitle
                     echo "Title in as expected. SUCCESS"
                 }
             }
