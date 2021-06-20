@@ -1,11 +1,13 @@
-pipeline { 
-    agent any 
+pipeline {
+    agent any
     stages {
         stage('Starting Triggerrd job') {
-            echo "--------Starting Triggerrd job-----------------"
-            build job: '../git@github.com:VAMarechal/infra.git/Triggered/dev', wait: true // false
-            echo "Triggerrd job complit. SUCCESS"
-        {
+           steps { 
+              echo "--------Starting Triggerrd job-----------------"
+              build job: '../git@github.com:VAMarechal/infra.git/Triggered/dev', wait: true // false
+              echo "Triggerrd job complit. SUCCESS"
+           }
+        }
         stage('Site Check') {
             steps { 
                 echo "--------Simply cURL of the site-----------------"
