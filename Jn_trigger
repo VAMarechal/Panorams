@@ -1,6 +1,11 @@
 pipeline { 
     agent any 
     stages {
+        stage('Starting Triggerrd job') {
+            echo "--------Starting Triggerrd job-----------------"
+            build job: '../git@github.com:VAMarechal/infra.git/Triggered/dev', wait: true // false
+            echo "Triggerrd job complit. SUCCESS"
+        {
         stage('Site Check') {
             steps { 
                 echo "--------Simply cURL of the site-----------------"
@@ -10,12 +15,12 @@ pipeline {
                     // Verify if curl return html from site
                      // final String siteTitle = sh(script: "curl -s $url --max-time 5", returnStdout: true).trim()
                     
-                    def code = new URL($url).openConnection().with {
-                      requestMethod = 'HEAD'
-                      connect()
-                      responseCode
-                    }
-                    echo $code
+                    // def code = new URL($url).openConnection().with {
+                    //  requestMethod = 'HEAD'
+                    //  connect()
+                   //   responseCode
+                   // }
+                  //  echo $code
                     
                     
                     // if(final String siteTitle = sh(script: "curl -s $url --max-time 5", returnStdout: true).trim()) {
