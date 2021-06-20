@@ -9,11 +9,20 @@ pipeline {
                      // final String url = "13.59.62.209"
                     // Verify if curl return html from site
                      // final String siteTitle = sh(script: "curl -s $url --max-time 5", returnStdout: true).trim()
-                    if(final String siteTitle = sh(script: "curl -s $url --max-time 5", returnStdout: true).trim()) {
-                       echo "0" 
-                    } else{ 
-                       echo "1"
+                    
+                    def code = new URL($url).openConnection().with {
+                      requestMethod = 'HEAD'
+                      connect()
+                      responseCode
                     }
+                    echo $code
+                    
+                    
+                    // if(final String siteTitle = sh(script: "curl -s $url --max-time 5", returnStdout: true).trim()) {
+                    //   echo "0" 
+                    //} else{ 
+                    //   echo "1"
+                    //}
                     // echo siteTitle
                     echo "Title in as expected. SUCCESS"
                 }
