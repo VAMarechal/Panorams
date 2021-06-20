@@ -21,7 +21,7 @@ pipeline {
                         script: "curl -s $url --max-time 5",
                         returnStatus: true
                     ) as Integer // explicit casting needed, because it returns String
-                    println $fileAlreadyExists  
+                    println fileAlreadyExists
                         
                     // Boolean bool = fileExists 'NewFile.txt'
                     
