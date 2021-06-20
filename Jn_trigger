@@ -4,7 +4,7 @@ pipeline {
         stage('Starting Triggerrd job') {
            steps { 
               echo "--------Starting Triggerrd job-----------------"
-              build job: '../Triggerrd_dev/Triggered', wait: true // false
+              build job: '../Triggerrd', wait: true // false
               echo "Triggerrd job complit. SUCCESS"
            }
         }
