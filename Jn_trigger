@@ -9,7 +9,7 @@ pipeline {
                      // final String url = "13.59.62.209"
                     // Verify if curl return html from site
                      // final String siteTitle = sh(script: "curl -s $url --max-time 5", returnStdout: true).trim()
-                    if(echo "5") {
+                    if(final String siteTitle = sh(script: "curl -s $url --max-time 5", returnStdout: true).trim()) {
                        echo "0" 
                     } else{ 
                        echo "1"
