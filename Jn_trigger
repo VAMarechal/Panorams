@@ -11,15 +11,13 @@ pipeline {
         stage('Site Check') {
             steps { 
                 echo "--------Simply cURL of the site-----------------"
-                    def code = new URL('http://www.google.com/made.up').openConnection().with {
-                        requestMethod = 'HEAD'
-                        connect()
-                        responseCode
-                    }
-                    echo code
-                    assert code == 404
-
-                
+                def code = new URL('http://www.google.com/made.up').openConnection().with {
+                    requestMethod = 'HEAD'
+                    connect()
+                    responseCode
+                }
+                echo code
+                assert code == 404
                 
                 script {
                     final String url = "3.21.54.71"
