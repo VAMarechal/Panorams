@@ -16,15 +16,22 @@ pipeline {
                      // final String url = "13.59.62.209"
                     // Verify if curl return html from site
                      // final String siteTitle = sh(script: "curl -s $url --max-time 5", returnStdout: true).trim()
-                                        
-                    Boolean bool = fileExists 'NewFile.txt'
-                    if(bool) {
-                        println "The File exists :)"
-                    }
-                    else {
-                        println "The File does not exist :("
-                    }                   
-
+                    def fileAlreadyExists = sh(
+                        script: "curl -o/dev/null -sfI \"$url\"; echo \\\$?",
+                        returnStdout: true
+                    ) as Integer // explicit casting needed, because it returns String
+                    println $fileAlreadyExists  
+                        
+                    // Boolean bool = fileExists 'NewFile.txt'
+                    
+                    // if(bool) {
+                    //     println "The File exists :)"
+                    // }
+                    // else {
+                    //     println "The File does not exist :("
+                    // }                   
+                     
+                    // println "The File does not exist :("
                     // if(final String siteTitle = sh(script: "curl -s $url --max-time 5", returnStdout: true).trim()) {
                     //   echo "0" 
                     //} else{ 
