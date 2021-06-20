@@ -12,16 +12,17 @@ pipeline {
             steps { 
                 echo "--------Simply cURL of the site-----------------"
                 script {
-                    final String url = "3.21.54.71"
+                    // final String url = "3.21.54.71"
+                    final String url = "3.19.234.142" // Dinamic
                      // final String url = "13.59.62.209"
                     // Verify if curl return html from site
                      // final String siteTitle = sh(script: "curl -s $url --max-time 5", returnStdout: true).trim()
-                    def fileAlreadyExists = sh(
+                    def siteAlreadyExists = sh(
                         // script: "curl -o/dev/null -sfI \"$url\"; echo \\\$?",
                         script: "curl -s $url --max-time 5",
                         returnStatus: true
                     ) as Integer // explicit casting needed, because it returns String
-                    println fileAlreadyExists
+                    println siteAlreadyExists
                         
                     // Boolean bool = fileExists 'NewFile.txt'
                     
