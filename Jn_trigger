@@ -24,7 +24,7 @@ pipeline {
                     if(siteNotExists) {
                          println "Site does not exist :("
                          println "--------Starting Triggerrd job-----------------"
-                         build job: '../Triggerrd', wait: false  // true 
+                         build job: '../Infra_pipeline', wait: false  // true 
                          println "Triggerrd job complit. SUCCESS"
                     } else {
                          println "Site exists :)"
