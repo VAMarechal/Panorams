@@ -21,13 +21,11 @@ pipeline {
                     ) as Boolean // Explicit casting needed, because it returns String
                     println siteNotExists
                     
-                    // if(bool) {
-                    //     println "The File exists :)"
-                    // }
-                    // else {
-                    //     println "The File does not exist :("
-                    // }                   
-                     
+                    if(siteNotExists) {
+                         println "Site does not exist :("
+                    } else {
+                         println "Site exists :)"
+                    }                   
                     echo "Title in as expected. SUCCESS"
                 }
             }
