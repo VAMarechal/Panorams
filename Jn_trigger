@@ -1,33 +1,24 @@
 pipeline {
     agent any
     stages {
-        // ! stage('Starting Triggerrd job') {
-        // !    steps { 
-        // !       echo "--------Starting Triggerrd job-----------------"
-        // !       build job: '../Triggerrd', wait: false  // true 
-        // !       echo "Triggerrd job complit. SUCCESS"
-        // !    }
-        // ! }
         stage('Site Check') {
             steps { 
                 echo "--------Simply cURL of the site-----------------"
                 script {
                     final String url = "3.21.54.71"
-                    // final String url = "3.19.234.142" // Dinamic
                     // Verify if curl return html from site
                     def siteNotExists = sh(
                         script: "curl -s $url --max-time 5",
                         returnStatus: true
                     ) as Boolean // Explicit casting needed, because it returns String
                     println siteNotExists
-                    
                     if(siteNotExists) {
-                         println "Site does not exist :("
-                         println "--------Starting Triggerrd job-----------------"
-                         build job: '../Infra_pipeline', wait: false  // true 
-                         println "Triggerrd job complit. SUCCESS"
+                        println "Site does not exist :("
+                        println "--------Starting Triggerrd job-----------------"
+                        build job: '../Infra_pipeline', wait: false  // true 
+                        println "Triggerrd job complit. SUCCESS"
                     } else {
-                         println "Site exists :)"
+                        println "Site exists :)"
                     }                   
                     echo "Title in as expected. SUCCESS"
                 }
